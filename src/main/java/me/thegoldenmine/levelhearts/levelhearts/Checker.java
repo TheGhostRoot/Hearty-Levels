@@ -1,6 +1,7 @@
 package me.thegoldenmine.levelhearts.levelhearts;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -15,13 +16,32 @@ public class Checker {
                 if (!Bukkit.getOnlinePlayers().isEmpty()) {
                     for (Player player : Bukkit.getOnlinePlayers()) {
                         if (player != null && player.hasPermission("heartylevels.play")) {
-                            boolean b = player.getLevel() == 0 || player.getLevel() == 1;
-                            if (b && player.getHealthScale() != 2) {
-                                player.setHealthScale(2);
-                            }
-                            if (player.getLevel() > 0 && player.getLevel() != player.getHealthScale() && player.getLevel() <= plugin.config.getInt("Max_Hearts")) {
-                                player.setHealthScale(player.getLevel() * 2);
-                            }
+                           int maxHeartsPoints = plugin.config.getInt("Max_Hearts") * 2;
+                           int minHeartsPoints = plugin.config.getInt("Min_Hearts") * 2;
+                           double heartsPoints = player.getHealthScale();
+                           int levels = player.getLevel();
+                           if (levels == 0) {
+                               if (!player.getGameMode().equals(GameMode.CREATIVE)) {
+                                   player.setHealthScale(minHeartsPoints);
+                               }
+                           }
+                           if (heartsPoints > maxHeartsPoints) {
+                               if (!player.getGameMode().equals(GameMode.CREATIVE)) {
+                                   player.setHealthScale(maxHeartsPoints);
+                               }
+                           }
+                           int NewLevels = levels * 2;
+                           int scale = minHeartsPoints + NewLevels;
+                           if (scale != heartsPoints && scale <= maxHeartsPoints) {
+                               if (!player.getGameMode().equals(GameMode.CREATIVE)) {
+                                   player.setHealthScale(scale);
+                               }
+                           }
+                           if (heartsPoints < minHeartsPoints) {
+                               if (!player.getGameMode().equals(GameMode.CREATIVE)) {
+                                   player.setHealthScale(minHeartsPoints);
+                               }
+                           }
                         }
                     }
                 }

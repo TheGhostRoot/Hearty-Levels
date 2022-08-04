@@ -32,6 +32,7 @@ public class Config {
             }
             setInt("Dropped_XP_multiplier", 2);
             setInt("Max_Hearts", 30);
+            setInt("Min_Hearts", 10);
         }
         if (!dataFolder.exists()) {
             if (dataFolder.mkdir()) {

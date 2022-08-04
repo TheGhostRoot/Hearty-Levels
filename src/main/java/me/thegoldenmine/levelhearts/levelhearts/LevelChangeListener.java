@@ -1,6 +1,7 @@
 package me.thegoldenmine.levelhearts.levelhearts;
 
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -26,11 +27,13 @@ public class LevelChangeListener implements Listener {
             if (newLevel > oldLevel) {
                 // Leveled up
                 double diff = newLevel - oldLevel;
-                double newHeathPoints = diff * 2;
+                //double newHeathPoints = diff * 2;
                 double maxHeath = player.getHealthScale();
-                double healthNew = maxHeath + newHeathPoints;
-                if (healthNew <= plugin.config.getInt("Max_Hearts")) {
-                    player.setHealthScale(healthNew);
+                double NewHeathPoints = maxHeath + diff * 2;
+                if (NewHeathPoints <= plugin.config.getInt("Max_Hearts") * 2) {
+                    if (!player.getGameMode().equals(GameMode.CREATIVE)) {
+                        player.setHealthScale(NewHeathPoints);
+                    }
                 }
             } else {
                 // Level down
@@ -38,13 +41,9 @@ public class LevelChangeListener implements Listener {
                 double newHeathPoints = diff * 2;
                 double maxHeath = player.getHealthScale();
                 double scale = maxHeath - newHeathPoints;
-                if (scale > 1) {
+                if (scale <= plugin.config.getInt("Min_Hearts") || scale > plugin.config.getInt("Min_Hearts")) {
+                    if (!player.getGameMode().equals(GameMode.CREATIVE)) {
                         player.setHealthScale(scale);
-                } else {
-                    if (player.getLevel() == 0 || player.getLevel() == 1) {
-                        player.setHealth(2);
-                    } else {
-                        player.setHealth(0);
                     }
                 }
             }
