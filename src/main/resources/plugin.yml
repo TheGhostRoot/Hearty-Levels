@@ -1,0 +1,15 @@
+name: HeartyLevels
+version: '${project.version}'
+main: me.thegoldenmine.levelhearts.levelhearts.LevelHearts
+authors: [ TheGoldenMine ]
+api-version: 1.13
+description: Your levels are your hearts.
+website: https://www.spigotmc.org/members/thegoldenmine.1437483/
+commands:
+  heartylevels:
+    description: Reloads the plugin
+    usage: /heartylevels
+permissions:
+  heartylevels.play:
+    description: You can play Hearty Levels gamemode
+    default: op
