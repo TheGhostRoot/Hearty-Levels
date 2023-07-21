@@ -1,0 +1,15 @@
+
+m
+java:S1104	"WMake levelHearts a static final constant or non-public and provide accessors if needed.(°¸Ìå
+n
+java:S1104
+"SMake checker a static final constant or non-public and provide accessors if needed.(¢ÈäÂúÿÿÿÿ
+m
+java:S1104"RMake config a static final constant or non-public and provide accessors if needed.(Ê’şøÿÿÿÿ
+M
+java:S2629"7Use the built-in formatting to construct this argument.(Í›ªü
+R
+java:S2629C"7Use the built-in formatting to construct this argument.(éïÿÿÿÿÿÿ
+0
+java:S1700	"Rename field "levelHearts"(°¸Ìå
+<	java:S131""Add a default case to this switch.(ïˆ÷şÿÿÿÿ
