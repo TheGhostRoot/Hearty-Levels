@@ -27,9 +27,13 @@ jobs:
 
 
       - name: Build and Package Maven Project
-        run: mvn clean package --file pom.xml
-        
-      - name: Update Repository
         run: |
-          git add target/*
-          git commit -m "Github Actions"
+          mvn clean package --file pom.xml
+          echo "version=0.4" >> $GITHUB_ENV
+          echo "artifactPath=$(pwd)/target" >> $GITHUB_ENV
+        
+      - name: Upload Plugin jar
+        uses: actions/upload-artifact@v3
+        with:
+          name: HeartyLevels-${{ env.version }}.jar
+          path: ${{ env.artifactPath }}/HeartyLevels-${{ env.version }}.jar
