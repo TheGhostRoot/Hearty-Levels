@@ -1,0 +1,41 @@
+# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
+# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
+
+name: Java Maven Build
+
+on:
+  release:
+    types: [created]
+ # push:
+ #   branches:
+ #     - ToolBox # Change this to the branch you want to trigger the workflow on (e.g., master)
+
+jobs:
+  build:
+    name: Package Maven Project
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+          java-package: 'jdk'
+          architecture: 'x64'
+
+
+      - name: Build and Package Maven Project
+        run: |
+          mvn clean package --file pom.xml
+          echo "version=0.5" >> $GITHUB_ENV
+          echo "artifactPath=$(pwd)/target" >> $GITHUB_ENV
+        
+      - name: Upload Plugin jar
+        uses: actions/upload-artifact@v3
+        with:
+          name: HeartyLevels-${{ env.version }}.jar
+          path: ${{ env.artifactPath }}/HeartyLevels-${{ env.version }}.jar
