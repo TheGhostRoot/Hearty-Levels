@@ -20,7 +20,11 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '11' # Change this to your desired Java version (e.g., '8', '11', '17')
+          java-version: '11'
+          distribution: 'adopt'
+          java-package: 'jdk'
+          architecture: 'x64'
+
 
       - name: Build and Package Maven Project
         run: mvn -B clean package --file pom.xml
