@@ -31,6 +31,8 @@ jobs:
         
       - name: Update Repository
         run: |
+          git config --global user.email "githubactions@ToolBox.com"
+          git config --global user.name "GitHub Actions"
           git add target/*
           git commit -m "Update built JAR"
           git push
