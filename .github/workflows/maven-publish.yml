@@ -4,9 +4,11 @@
 name: Java Maven Build
 
 on:
-  push:
-    branches:
-      - ToolBox # Change this to the branch you want to trigger the workflow on (e.g., master)
+  release:
+    types: [created]
+ # push:
+ #   branches:
+ #     - ToolBox # Change this to the branch you want to trigger the workflow on (e.g., master)
 
 jobs:
   build:
