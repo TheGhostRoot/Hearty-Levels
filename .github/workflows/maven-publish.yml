@@ -27,4 +27,4 @@ jobs:
 
 
       - name: Build and Package Maven Project
-        run: mvn -B clean package --file pom.xml
+        run: mvn clean package --file pom.xml
