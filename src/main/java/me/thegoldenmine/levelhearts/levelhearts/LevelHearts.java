@@ -53,20 +53,20 @@ public class LevelHearts extends JavaPlugin {
         }
         // This will return true if the server version was compatible with one of our NMS classes
         // because if it is, our actionbar would not be null
-        if (levelHearts != null) {
+        if (levelHearts == null) {
+            getLogger().severe("Failed to setup "+name);
+            getLogger().severe("Your server version is not compatible with this plugin!");
+            Bukkit.getPluginManager().disablePlugin(this);
+        } else {
             try {
                 config = new Config(this);
             }catch (IOException e) {
-                getLogger().info("-- Couldn't load the config file.");
+                getLogger().info("Couldn't load the config file.");
             }
             checker = new Checker(this);
             getCommand("heartylevels").setExecutor(new ReloadCommand(this));
             getServer().getPluginManager().registerEvents(new LevelChangeListener(this), this);
             getLogger().info("  <> Registered Listener <>");
-        } else {
-            getLogger().severe("Failed to setup "+name);
-            getLogger().severe("Your server version is not compatible with this plugin!");
-            Bukkit.getPluginManager().disablePlugin(this);
         }
     }
 

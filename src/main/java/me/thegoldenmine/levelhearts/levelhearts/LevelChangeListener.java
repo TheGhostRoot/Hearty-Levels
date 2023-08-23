@@ -36,6 +36,7 @@ public class LevelChangeListener implements Listener {
 
             if (!player.getGameMode().equals(GameMode.CREATIVE) && newHealthPoints != currentHealthPoints) {
                 player.setHealthScale(newHealthPoints);
+                player.setMaxHealth(newHealthPoints);
             }
 
         }
@@ -47,20 +48,4 @@ public class LevelChangeListener implements Listener {
             event.setDroppedExp(event.getDroppedExp() * plugin.config.getInt("Dropped_XP_multiplier"));
         }
     }
-    /*
-    @EventHandler
-    public void onAttack(EntityDamageByEntityEvent event) {
-        if (plugin.config.getBool("Disable_on_hit_message")) { return; }
-        Entity attacker = event.getDamager();
-        Entity diffender = event.getEntity();
-        if (attacker instanceof Player && diffender instanceof Player) {
-            Player playerAtt = (Player) attacker;
-            Player playerDef = (Player) diffender;
-            int health = (int) playerDef.getHealth();
-            int health1 = (int) playerAtt.getHealth();
-            if (playerAtt.hasPermission("heartylevels.play") && playerDef.hasPermission("heartylevels.play") && health > 0 && health1 > 0) {
-                playerAtt.sendMessage(plugin.config.getStr("On_hit_message").replace("<level>", String.valueOf(playerDef.getLevel())).replace("<heart>", String.valueOf(health)));
-            }
-        }
-    }*/
 }
