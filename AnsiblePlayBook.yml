@@ -1,0 +1,11 @@
+---
+  - name: "Playing with Ansible and Git"
+    hosts: localhost
+    connection: local 
+    tasks:
+
+    - name: "Build with Maven"
+      shell: "mvn -B clean package"
+      register: "output"
+
+    - debug: var=output.stdout_lines
