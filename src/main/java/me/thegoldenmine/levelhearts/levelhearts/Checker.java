@@ -25,7 +25,8 @@ public class Checker {
                                     newHealthPoints = maxHeartsPoints;
                                 }
 
-                                if (newHealthPoints != player.getHealthScale() && !player.getGameMode().equals(GameMode.CREATIVE)) {
+                                // newHealthPoints / 2
+                                if (newHealthPoints  != player.getHealthScale() && !player.getGameMode().equals(GameMode.CREATIVE)) {
                                     player.setHealthScale(newHealthPoints);
                                     player.setMaxHealth(newHealthPoints);
                                 }

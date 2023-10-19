@@ -47,6 +47,7 @@ public class LevelHearts extends JavaPlugin {
                 case "v1_19_R2":
                 case "v1_19_R3":
                 case "v1_20_R1":
+                case "v1_20_R2":
                     levelHearts = this;
                     break;
             }
