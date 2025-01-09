@@ -1,5 +1,5 @@
 name: HeartyLevels
-version: '0.6'
+version: '1.0'
 main: me.thegoldenmine.levelhearts.levelhearts.LevelHearts
 authors: [ TheGoldenMine ]
 api-version: 1.13
@@ -9,6 +9,9 @@ commands:
   heartylevels:
     description: Reloads the plugin
     usage: /heartylevels
+  resethearts:
+    description: Resets all player hearts to the MIN value in the config
+    usage: /resethearts
 permissions:
   heartylevels.play:
     description: You can play Hearty Levels gamemode

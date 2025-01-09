@@ -26,6 +26,9 @@ public class LevelHearts extends JavaPlugin {
         }
         if (!version.equals("N/A")) {
             getLogger().info("Your server is running version " + version);
+            // No matter the version run
+            levelHearts = this;
+            /*
             switch (version) {
                 case "v1_18_R1":
                 case "v1_18_R2":
@@ -48,9 +51,10 @@ public class LevelHearts extends JavaPlugin {
                 case "v1_19_R3":
                 case "v1_20_R1":
                 case "v1_20_R2":
+                case "v1_20_R3":
                     levelHearts = this;
                     break;
-            }
+            }*/
         }
         // This will return true if the server version was compatible with one of our NMS classes
         // because if it is, our actionbar would not be null

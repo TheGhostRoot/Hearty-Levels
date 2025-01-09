@@ -9,6 +9,9 @@ commands:
   heartylevels:
     description: Reloads the plugin
     usage: /heartylevels
+  resethearts:
+    description: Resets all player hearts to the MIN value in the config
+    usage: /resethearts
 permissions:
   heartylevels.play:
     description: You can play Hearty Levels gamemode

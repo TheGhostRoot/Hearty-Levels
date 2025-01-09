@@ -6,7 +6,7 @@
 
     <groupId>me.thegoldenmine.levelhearts</groupId>
     <artifactId>HeartyLevels</artifactId>
-    <version>0.6</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <name>HeartyLevels</name>
@@ -55,6 +55,11 @@
     </build>
 
     <repositories>
+         <repository>
+            <id>fury-push</id>
+            <name>Fury</name>
+            <url>https://maven.fury.io/iorus-developmet/</url>
+        </repository>
         <repository>
             <id>spigotmc-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
@@ -73,4 +78,14 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+<distributionManagement>
+  <repository>
+    <id>fury-push</id>
+    <name>Fury</name>
+    <url>https://maven.fury.io/iorus-developmet/</url>
+  </repository>
+</distributionManagement>
+
+
 </project>
